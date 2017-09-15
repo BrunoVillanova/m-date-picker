@@ -413,24 +413,27 @@ class DatePicker extends React.Component<IDatePickerProps, any> {
     const date = this.getDate();
     let cols: any[] = [];
     let value: any[] = [];
+    const dateYear = date.getFullYear();
+    const dateMonth = date.getMonth();
+    const dateDay = date.getDate();
 
     if (mode === YEAR) {
       return {
         cols: this.getDateData(),
-        value: [date.getFullYear() + ''],
+        value: [dateYear + ''],
       };
     }
 
     if (mode === MONTH) {
       return {
         cols: this.getDateData(),
-        value: [date.getFullYear() + '', date.getMonth() + ''],
+        value: [dateMonth + '', dateYear + ''],
       };
     }
 
     if (mode === DATETIME || mode === DATE) {
       cols = this.getDateData();
-      value = [date.getFullYear() + '', date.getMonth() + '', date.getDate() + ''];
+      value = [dateDay + '', dateMonth + '',dateYear + ''];
     }
 
     if (mode === DATETIME || mode === TIME) {
